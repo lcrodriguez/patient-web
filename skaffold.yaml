@@ -1,0 +1,31 @@
+apiVersion: skaffold/v1alpha2
+kind: Config
+build:
+  tagPolicy:
+    envTemplate:
+      template: "{{.DOCKER_REGISTRY}}/lcrodriguez/patient-web:{{.VERSION}}"
+  artifacts:
+  - imageName: changeme
+    workspace: .
+    docker: {}
+  local: {}
+deploy:
+  kubectl:
+    manifests:
+profiles:
+- name: dev
+  build:
+    tagPolicy:
+      envTemplate:
+        template: "{{.DOCKER_REGISTRY}}/lcrodriguez/patient-web:{{.DIGEST_HEX}}"
+    artifacts:
+    - docker: {}
+    local: {}
+  deploy:
+    helm:
+      releases:
+      - name: patient-web
+        chartPath: charts/patient-web
+        setValueTemplates:
+          image.repository: "{{.DOCKER_REGISTRY}}/lcrodriguez/patient-web"
+          image.tag: "{{.DIGEST_HEX}}"
