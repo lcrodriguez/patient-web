@@ -1,0 +1,54 @@
+@import '../../styles/app';
+
+.root {
+  :global {
+    .post-comments footer {
+      margin: 0 (-$widget-padding-horizontal) (-$widget-padding-vertical);
+      padding: $widget-padding-vertical $widget-padding-horizontal;
+    }
+
+    .stat-item .name {
+      margin-top: 10px;
+    }
+  }
+}
+
+.table {
+  :global(.table.table-sm) {
+    td {
+      font-size: 1rem;
+      vertical-align: middle;
+    }
+  }
+}
+
+.bootstrapTable {
+  border: none;
+
+  :global .table {
+    thead,
+    tbody {
+      th,
+      td {
+        border-right: none;
+        border-left: none;
+      }
+    }
+
+    thead th {
+      background: transparent;
+    }
+  }
+}
+
+.posAbsolute{
+  position: absolute;
+  top: 36px;
+  right: 36px;
+}
+
+.posAbsoluteList{
+  position: absolute;
+  top: 78px;
+  right: 36px;
+}

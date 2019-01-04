@@ -1,0 +1,6 @@
+{
+  "name": "bucket",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./Bucket.js"
+}
